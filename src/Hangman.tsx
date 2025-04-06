@@ -1,4 +1,3 @@
-import React from "react";
 
 const HEAD = (
   <div className="absolute top-[48px] right-[-21px] h-[45px] w-[45px] border-4 border-white rounded-full" />

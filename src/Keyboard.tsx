@@ -1,5 +1,3 @@
-import React from "react";
-
 const alphabet = [
   "a",
   "b",
@@ -33,7 +31,7 @@ const Keyboard = () => {
   return (
     <div className="mt-5 border-2 border-gray-600 p-1.5 rounded-md">
         {
-            alphabet.map((char, index) => (
+            alphabet.map((char) => (
                 <button className="p-6 bg-gray-800 text-2xl m-0.5 hover:bg-gray-700 hover:cursor-pointer active:bg-gray-500">{char.toLocaleUpperCase()}</button>
             ))
         }
