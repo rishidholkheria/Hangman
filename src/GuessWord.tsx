@@ -1,14 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const GuessWord = () => {
-  const [guessedLetters, setGuessedLetters] = useState(["t"]);
+type HangmanWordProps = {
+  guessedLetters: string[],
+  newWord: string,
+  hintLetters?: string[] // New prop for hint letters
+}
 
-  const word = "TEST";
+const GuessWord = ({guessedLetters, newWord, hintLetters = []}: HangmanWordProps) => {
   return (
     <div className='min-w-[450px] bg-gray-800 p-5 mt-12 rounded-lg flex justify-evenly'>
-        {word.split("").map((letter, key) => (
-            <span key={key} className= {`${guessedLetters.includes(letter.toLowerCase()) ? "text-white" : "text-transparent"} text-5xl font-mono font-extrabold border-b-4 border-white min-w-[32px] text-center`}>{letter}</span>
-        ))}
+        {newWord.split("").map((letter, key) => {
+          const lowercaseLetter = letter.toLowerCase();
+          const isGuessed = guessedLetters.includes(lowercaseLetter);
+          const isHint = hintLetters.includes(lowercaseLetter);
+          
+          return (
+            <span 
+              key={key} 
+              className={`
+                ${isGuessed ? "text-white" : "text-transparent"} 
+                ${isHint ? "text-yellow-300" : ""} 
+                text-5xl font-mono font-extrabold border-b-4 border-white min-w-[32px] text-center
+              `}
+            >
+              {letter}
+            </span>
+          );
+        })}
     </div>
   )
 }
